@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:todo_app/core/pages_route_name.dart';
+import 'package:todo_app/core/routes_generator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,15 +10,14 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: AnnotatedRegion<SystemUiOverlayStyle>(
-            value: SystemUiOverlayStyle(systemNavigationBarColor: Colors.white),
-            child: Scaffold()));
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle(systemNavigationBarColor: Colors.black),
+        child: MaterialApp(
+          initialRoute: PagesRouteName.initial,
+          onGenerateRoute: RoutesGenerator.onGenerateRoutes,
+          title: "Todo App",
+        ));
   }
 }
-
-
