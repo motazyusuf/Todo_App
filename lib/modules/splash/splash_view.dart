@@ -13,7 +13,7 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
-    Timer(Duration(seconds: 4), () {
+    Timer(Duration(seconds: 6), () {
       Navigator.pushNamed(context, PagesRouteName.login);
     });
     super.initState();
@@ -21,6 +21,6 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return Text("This is Splash");
+    return Image.asset("assets/images/splashLight.png", fit: BoxFit.cover,);
   }
 }

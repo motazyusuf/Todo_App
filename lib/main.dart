@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
     return AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle(systemNavigationBarColor: Colors.black),
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           initialRoute: PagesRouteName.initial,
           onGenerateRoute: RoutesGenerator.onGenerateRoutes,
           title: "Todo App",
