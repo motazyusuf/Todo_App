@@ -155,11 +155,12 @@ class _LoginViewState extends State<LoginView> {
                     height: 60,
                   ),
 
-
-                  // button
+                  // login button
                   FilledButton(
                       onPressed: () {
-                        if (formKey.currentState!.validate()) print("Valid");
+                        // if (formKey.currentState!.validate())
+                        Navigator.pushReplacementNamed(
+                              context, PagesRouteName.layout);
                       },
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
