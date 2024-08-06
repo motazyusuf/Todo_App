@@ -36,9 +36,9 @@ class _LayoutViewState extends State<LayoutView> {
           child: CircleAvatar(
             backgroundColor: theme.primaryColor,
             radius: 24,
-            child: Icon(
+            child: const Icon(
               Icons.add,
-              color: theme.primaryColorLight,
+              color: Colors.white,
             ),
           ),
         ),
