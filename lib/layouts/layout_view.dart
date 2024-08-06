@@ -19,13 +19,14 @@ class _LayoutViewState extends State<LayoutView> {
     var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;
     var theme = Theme.of(context);
-    var layouts = [const SettingsView(), const TasksView()];
+    var layouts = [const TasksView(), const SettingsView()];
 
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
           systemNavigationBarColor:
               Theme.of(context).bottomNavigationBarTheme.backgroundColor),
       child: Scaffold(
+        backgroundColor: theme.primaryColorLight,
         extendBody: true,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
@@ -68,22 +69,3 @@ class _LayoutViewState extends State<LayoutView> {
   }
 }
 
-// Column(
-// children: [
-// Container(
-// padding: EdgeInsetsDirectional.only(start: 20, top: height * 0.1),
-// height: height * 0.27,
-// width: width,
-// decoration: BoxDecoration(color: theme.primaryColor),
-// child: Text(
-// "To Do List",
-// style: theme.textTheme.titleLarge,
-// ),
-// ),
-// Expanded(
-// child: Container(
-// decoration: BoxDecoration(color: theme.primaryColorLight),
-// ),
-// )
-// ],
-// )
