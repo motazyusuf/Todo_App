@@ -2,18 +2,26 @@ import 'package:flutter/material.dart';
 
 class ApplicationThemeManager {
   static const Color primaryColor = Color(0xff5d9cec);
-  static const Color systemNavigationBar = Color(0xffdfecdb);
+  static const Color deviceSystemNavigationBar = Color(0xffdfecdb);
 
   static ThemeData lightTheme = ThemeData(
-
     primaryColor: primaryColor,
-    primaryColorLight: systemNavigationBar,
+    bottomAppBarTheme: const BottomAppBarTheme(
+      height: 93,
+      color: Colors.white,
+      shape: CircularNotchedRectangle(),
+    ),
+    floatingActionButtonTheme:
+        FloatingActionButtonThemeData(backgroundColor: Colors.white),
+    primaryColorLight: deviceSystemNavigationBar,
     primaryColorDark: Colors.black,
     filledButtonTheme: FilledButtonThemeData(
-        style: FilledButton.styleFrom(backgroundColor: primaryColor,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)))),
+        style: FilledButton.styleFrom(
+            backgroundColor: primaryColor,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8)))),
     scaffoldBackgroundColor: Colors.transparent,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
         iconTheme: IconThemeData(color: Colors.white)),
     textTheme: const TextTheme(
@@ -56,7 +64,13 @@ class ApplicationThemeManager {
 
       //Label
     ),
-
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: Colors.transparent,
+      selectedIconTheme: IconThemeData(color: primaryColor, size: 35),
+      unselectedIconTheme: IconThemeData(size: 30),
+      showUnselectedLabels: false,
+      showSelectedLabels: false,
+    ),
   );
 
   static ThemeData DarkTheme = ThemeData(
