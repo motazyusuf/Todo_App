@@ -37,6 +37,7 @@ class _SettingsComponentState extends State<SettingsComponent> {
           Padding(
             padding: const EdgeInsets.only(left: 15.0, top: 5),
             child: CustomDropdown<String>(
+              initialItem: widget.options[0],
               closedHeaderPadding: EdgeInsets.all(10),
               hintText: "Select ${widget.optionsName}",
               decoration: CustomDropdownDecoration(
