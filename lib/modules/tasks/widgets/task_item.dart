@@ -16,7 +16,7 @@ class TaskItem extends StatelessWidget {
           decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.shade600,
+                  color: theme.shadowColor,
                   blurRadius: 5,
                   spreadRadius: 0.005,
                   offset: Offset(-6, 5),

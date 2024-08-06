@@ -28,6 +28,7 @@ class _TasksViewState extends State<TasksView> {
             clipBehavior: Clip.none,
             alignment: Alignment.topCenter,
             children: [
+              // top part color
               Container(
                 padding: EdgeInsetsDirectional.only(start: 20, top: 60),
                 height: height * 0.22,
@@ -38,6 +39,8 @@ class _TasksViewState extends State<TasksView> {
                   style: theme.textTheme.titleLarge,
                 ),
               ),
+
+              // calendar
               Positioned(
                 top: height * 0.16,
                 child: SizedBox(
@@ -55,9 +58,16 @@ class _TasksViewState extends State<TasksView> {
                           monthStrStyle: theme.textTheme.bodySmall
                               ?.copyWith(color: theme.primaryColor),
                           decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: theme.shadowColor,
+                                  blurRadius: 5,
+                                  spreadRadius: 0.005,
+                                  offset: Offset(-3, -1),
+                                )
+                              ],
                               borderRadius: BorderRadius.circular(12),
-                              color: theme.bottomAppBarTheme.color
-                                  ?.withOpacity(0.85))),
+                              color: theme.bottomAppBarTheme.color)),
                       inactiveDayStyle: DayStyle(
                         monthStrStyle: theme.textTheme.bodySmall
                             ?.copyWith(color: theme.primaryColor),
@@ -68,27 +78,26 @@ class _TasksViewState extends State<TasksView> {
                         decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.shade600,
+                                color: theme.shadowColor,
                                 blurRadius: 5,
                                 spreadRadius: 0.005,
                                 offset: Offset(-3, -1),
                               )
                             ],
                             borderRadius: BorderRadius.circular(12),
-                            color: theme.bottomAppBarTheme.color
-                                ?.withOpacity(0.85)),
+                            color: theme.bottomAppBarTheme.color),
                       ),
                       activeDayStyle: DayStyle(
                         monthStrStyle: theme.textTheme.bodySmall
-                            ?.copyWith(color: theme.primaryColorLight),
+                            ?.copyWith(color: Colors.white),
                         dayNumStyle: theme.textTheme.bodyLarge
-                            ?.copyWith(color: theme.primaryColorLight),
+                            ?.copyWith(color: Colors.white),
                         dayStrStyle: theme.textTheme.bodySmall
-                            ?.copyWith(color: theme.primaryColorLight),
+                            ?.copyWith(color: Colors.white),
                         decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.shade600,
+                                color: theme.shadowColor,
                                 blurRadius: 5,
                                 spreadRadius: 0.005,
                                 offset: Offset(-3, -1),
@@ -116,7 +125,7 @@ class _TasksViewState extends State<TasksView> {
         ),
         Expanded(
           child: ListView.builder(
-              itemCount: 5, itemBuilder: (context, index) => TaskItem()),
+              itemCount: 3, itemBuilder: (context, index) => TaskItem()),
         )
       ],
     );

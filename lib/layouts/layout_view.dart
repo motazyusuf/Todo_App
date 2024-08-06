@@ -23,8 +23,7 @@ class _LayoutViewState extends State<LayoutView> {
 
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
-          systemNavigationBarColor:
-              Theme.of(context).bottomNavigationBarTheme.backgroundColor),
+          systemNavigationBarColor: Theme.of(context).bottomAppBarTheme.color),
       child: Scaffold(
         backgroundColor: theme.primaryColorLight,
         extendBody: true,
@@ -37,9 +36,9 @@ class _LayoutViewState extends State<LayoutView> {
           child: CircleAvatar(
             backgroundColor: theme.primaryColor,
             radius: 24,
-            child: Icon(
+            child: const Icon(
               Icons.add,
-              color: theme.primaryColorLight,
+              color: Colors.white,
             ),
           ),
         ),
