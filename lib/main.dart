@@ -13,14 +13,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle(systemNavigationBarColor: Colors.black),
-        child: MaterialApp(
-          theme: ApplicationThemeManager.lightTheme,
-          debugShowCheckedModeBanner: false,
-          initialRoute: PagesRouteName.initial,
-          onGenerateRoute: RoutesGenerator.onGenerateRoutes,
-          title: "Todo App",
-        ));
+    return MaterialApp(
+      theme: ApplicationThemeManager.lightTheme,
+      debugShowCheckedModeBanner: false,
+      initialRoute: PagesRouteName.initial,
+      onGenerateRoute: RoutesGenerator.onGenerateRoutes,
+      title: "Todo App",
+    );
   }
 }
+
+
