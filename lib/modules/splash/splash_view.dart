@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:todo_app/core/pages_route_name.dart';
 
 class SplashView extends StatefulWidget {
@@ -14,13 +15,19 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     Timer(Duration(seconds: 6), () {
-      Navigator.pushNamed(context, PagesRouteName.login);
+      Navigator.pushReplacementNamed(context, PagesRouteName.login);
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset("assets/images/splashLight.png", fit: BoxFit.cover,);
+    return AnnotatedRegion(
+        value: SystemUiOverlayStyle(
+            systemNavigationBarColor: Theme.of(context).primaryColorLight),
+        child: Image.asset(
+          "assets/images/splashLight.png",
+          fit: BoxFit.cover,
+        ));
   }
 }
