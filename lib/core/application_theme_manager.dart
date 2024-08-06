@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_date_timeline/easy_date_timeline.dart';
 
 class ApplicationThemeManager {
   static const Color primaryColor = Color(0xff5d9cec);
@@ -46,6 +47,11 @@ class ApplicationThemeManager {
       bodyMedium: TextStyle(
           fontFamily: "Poppins",
           fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: Colors.black),
+      bodySmall: TextStyle(
+          fontFamily: "Poppins",
+          fontSize: 15,
           fontWeight: FontWeight.bold,
           color: Colors.black),
 
