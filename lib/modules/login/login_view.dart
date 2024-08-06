@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:todo_app/core/pages_route_name.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -183,9 +184,11 @@ class _LoginViewState extends State<LoginView> {
                   ),
 
 
-                  // forgot password
+                  // Create new account
                   InkWell(
-                    onTap: (){},
+                    onTap: (){
+                      Navigator.pushNamed(context, PagesRouteName.registration);
+                    },
                     child: Padding(
                       padding:  EdgeInsets.only(left: width/4 ),
                       child: Text(
