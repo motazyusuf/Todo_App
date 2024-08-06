@@ -179,7 +179,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                   ),
 
                   const SizedBox(
-                    height: 70,
+                    height: 60,
                   ),
 
                   // button
