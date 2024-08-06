@@ -1,5 +1,8 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../core/settings_provider.dart';
 
 class SettingsComponent extends StatefulWidget {
   SettingsComponent(
@@ -15,6 +18,7 @@ class SettingsComponent extends StatefulWidget {
 class _SettingsComponentState extends State<SettingsComponent> {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingsProvider>(context);
     var theme = Theme.of(context);
     double height = MediaQuery.sizeOf(context).height;
 
@@ -49,6 +53,15 @@ class _SettingsComponentState extends State<SettingsComponent> {
                   expandedBorderRadius: BorderRadius.circular(1),
                   closedBorderRadius: BorderRadius.circular(1)),
               items: widget.options,
+              onChanged: (value) {
+                if (value == "Dark") {
+                  provider.changeMode(ThemeMode.dark);
+                  provider.changeSplashPath("assets/images/splashDark.png");
+                } else if (value == "Light") {
+                  provider.changeMode(ThemeMode.light);
+                  provider.changeSplashPath("assets/images/splashLight.png");
+                }
+              },
             ),
           )
         ],
