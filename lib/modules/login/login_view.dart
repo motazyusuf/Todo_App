@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:todo_app/core/pages_route_name.dart';
@@ -35,13 +33,10 @@ class _LoginViewState extends State<LoginView> {
         child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Padding(
-              padding: const EdgeInsets.only(top: 10.0),
-              child: Text(
-                textAlign: TextAlign.center,
-                "Login",
-                style: theme.textTheme.titleMedium,
-              ),
+            title: Text(
+              textAlign: TextAlign.center,
+              "Login",
+              style: theme.textTheme.titleMedium,
             ),
           ),
           body: Padding(

@@ -32,13 +32,10 @@ class _RegistrationViewState extends State<RegistrationView> {
         child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Padding(
-              padding: const EdgeInsets.only(top: 10.0),
-              child: Text(
-                textAlign: TextAlign.center,
-                "Create account",
-                style: theme.textTheme.titleMedium,
-              ),
+            title: Text(
+              textAlign: TextAlign.center,
+              "Create account",
+              style: theme.textTheme.titleMedium,
             ),
           ),
           body: Padding(
