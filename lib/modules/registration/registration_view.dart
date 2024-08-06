@@ -10,6 +10,7 @@ class RegistrationView extends StatefulWidget {
 
 class _RegistrationViewState extends State<RegistrationView> {
   TextEditingController emailController = TextEditingController();
+  TextEditingController personController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   var formKey = GlobalKey<FormState>();
   bool isObscure = true;
@@ -60,24 +61,20 @@ class _RegistrationViewState extends State<RegistrationView> {
                     height: 30,
                   ),
 
-                  // email
+                  // full name
                   Text(
                     "Full name",
                     style: theme.textTheme.displayMedium,
                   ),
                   TextFormField(
                     validator: (value) {
-                      var regex = RegExp(
-                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
                       if (value == null || value.trim().isEmpty) {
-                        return "Please enter your email";
-                      } else if (!regex.hasMatch(value)) {
-                        return "Invalid E-mail";
+                        return "Please enter your name";
                       }
 
                       return null;
                     },
-                    controller: emailController,
+                    controller: personController,
                     cursorColor: theme.primaryColor,
                     style: theme.textTheme.displaySmall
                         ?.copyWith(color: theme.primaryColorDark),
@@ -90,7 +87,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                         borderSide:
                             BorderSide(width: 2, color: theme.primaryColor),
                       ),
-                      hintText: "Enter your email address",
+                      hintText: "Enter your full name",
                       hintStyle: theme.textTheme.displaySmall,
                     ),
                   ),
@@ -98,6 +95,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                   const SizedBox(
                     height: 30,
                   ),
+
                   // email
                   Text(
                     "E-mail",
