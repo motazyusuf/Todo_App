@@ -23,8 +23,7 @@ class _LayoutViewState extends State<LayoutView> {
 
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
-          systemNavigationBarColor:
-              Theme.of(context).bottomNavigationBarTheme.backgroundColor),
+          systemNavigationBarColor: Theme.of(context).bottomAppBarTheme.color),
       child: Scaffold(
         backgroundColor: theme.primaryColorLight,
         extendBody: true,

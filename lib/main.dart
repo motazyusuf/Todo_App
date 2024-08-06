@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:todo_app/core/application_theme_manager.dart';
 import 'package:todo_app/core/pages_route_name.dart';
 import 'package:todo_app/core/routes_generator.dart';
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ApplicationThemeManager.lightTheme,
+      theme: ApplicationThemeManager.DarkTheme,
       debugShowCheckedModeBanner: false,
       initialRoute: PagesRouteName.initial,
       onGenerateRoute: RoutesGenerator.onGenerateRoutes,

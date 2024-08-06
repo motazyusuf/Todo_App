@@ -28,6 +28,7 @@ class _TasksViewState extends State<TasksView> {
             clipBehavior: Clip.none,
             alignment: Alignment.topCenter,
             children: [
+              // top part color
               Container(
                 padding: EdgeInsetsDirectional.only(start: 20, top: 60),
                 height: height * 0.22,
@@ -38,6 +39,8 @@ class _TasksViewState extends State<TasksView> {
                   style: theme.textTheme.titleLarge,
                 ),
               ),
+
+              // calendar
               Positioned(
                 top: height * 0.16,
                 child: SizedBox(
@@ -68,7 +71,6 @@ class _TasksViewState extends State<TasksView> {
                         decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.shade600,
                                 blurRadius: 5,
                                 spreadRadius: 0.005,
                                 offset: Offset(-3, -1),
@@ -88,9 +90,8 @@ class _TasksViewState extends State<TasksView> {
                         decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.shade600,
                                 blurRadius: 5,
-                                spreadRadius: 0.005,
+                                spreadRadius: 0.07,
                                 offset: Offset(-3, -1),
                               )
                             ],
@@ -116,7 +117,7 @@ class _TasksViewState extends State<TasksView> {
         ),
         Expanded(
           child: ListView.builder(
-              itemCount: 5, itemBuilder: (context, index) => TaskItem()),
+              itemCount: 3, itemBuilder: (context, index) => TaskItem()),
         )
       ],
     );
