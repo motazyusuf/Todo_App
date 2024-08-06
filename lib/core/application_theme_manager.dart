@@ -13,7 +13,9 @@ class ApplicationThemeManager {
         style: FilledButton.styleFrom(backgroundColor: primaryColor,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)))),
     scaffoldBackgroundColor: Colors.transparent,
-    appBarTheme: AppBarTheme(backgroundColor: Colors.transparent),
+    appBarTheme: AppBarTheme(
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(color: Colors.white)),
     textTheme: const TextTheme(
       // Title
       titleLarge: TextStyle(
