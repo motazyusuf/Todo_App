@@ -1,5 +1,7 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/core/settings_provider.dart';
 
 class SettingsComponent extends StatefulWidget {
   SettingsComponent(
@@ -17,6 +19,7 @@ class _SettingsComponentState extends State<SettingsComponent> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     double height = MediaQuery.sizeOf(context).height;
+    var provider = Provider.of<SettingsProvider>(context);
 
     return Padding(
       padding: EdgeInsets.only(top: 10, left: 15, right: 15),
@@ -33,9 +36,20 @@ class _SettingsComponentState extends State<SettingsComponent> {
           Padding(
             padding: const EdgeInsets.only(left: 15.0, top: 5),
             child: CustomDropdown<String>(
+              initialItem: widget.options[0],
               closedHeaderPadding: EdgeInsets.all(10),
               hintText: "Select ${widget.optionsName}",
-              onChanged: (value) {},
+              onChanged: (value) {
+                if (value == "Dark") {
+                  provider.changeSplashPath("assets/images/splashDark.png");
+                  provider.changeMode(ThemeMode.dark);
+                } else if (value == "Light") {
+                  provider.changeSplashPath("assets/images/splashLight.png");
+                  provider.changeMode(ThemeMode.light);
+                }
+
+                setState(() {});
+              },
               decoration: CustomDropdownDecoration(
                   headerStyle: theme.textTheme.bodySmall?.copyWith(
                       color: theme.primaryColor, fontWeight: FontWeight.normal),

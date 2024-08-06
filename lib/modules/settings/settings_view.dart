@@ -15,7 +15,7 @@ class _SettingsViewState extends State<SettingsView> {
     var width = MediaQuery.sizeOf(context).width;
     var theme = Theme.of(context);
     List<String> language = ["English", "Arabic"];
-    List<String> mode = ["Light", "Dark"];
+    List<String> mode = ["Dark", "Light"];
 
     return Column(
       children: [
