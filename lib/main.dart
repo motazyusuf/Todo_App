@@ -7,7 +7,8 @@ import 'package:todo_app/core/routes_generator.dart';
 import 'core/settings_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => SettingsProvider(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
