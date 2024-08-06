@@ -36,6 +36,9 @@ class _SettingsViewState extends State<SettingsView> {
           options: language,
           optionsName: "Language:",
         ),
+        SizedBox(
+          height: 10,
+        ),
         SettingsComponent(
           options: mode,
           optionsName: "Mode:",
