@@ -58,6 +58,14 @@ class _TasksViewState extends State<TasksView> {
                           monthStrStyle: theme.textTheme.bodySmall
                               ?.copyWith(color: theme.primaryColor),
                           decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: theme.shadowColor,
+                                  blurRadius: 5,
+                                  spreadRadius: 0.005,
+                                  offset: Offset(-3, -1),
+                                )
+                              ],
                               borderRadius: BorderRadius.circular(12),
                               color: theme.bottomAppBarTheme.color)),
                       inactiveDayStyle: DayStyle(
@@ -70,6 +78,7 @@ class _TasksViewState extends State<TasksView> {
                         decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
+                                color: theme.shadowColor,
                                 blurRadius: 5,
                                 spreadRadius: 0.005,
                                 offset: Offset(-3, -1),
@@ -88,8 +97,9 @@ class _TasksViewState extends State<TasksView> {
                         decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
+                                color: theme.shadowColor,
                                 blurRadius: 5,
-                                spreadRadius: 0.07,
+                                spreadRadius: 0.005,
                                 offset: Offset(-3, -1),
                               )
                             ],
