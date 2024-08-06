@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:todo_app/core/application_theme_manager.dart';
 import 'package:todo_app/core/pages_route_name.dart';
 import 'package:todo_app/core/routes_generator.dart';
-import 'package:todo_app/core/settings_provider.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-      create: (context) => SettingsProvider(), child: const MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,12 +12,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<SettingsProvider>(context);
-
     return MaterialApp(
-      themeMode: provider.currentMode,
-      darkTheme: ApplicationThemeManager.darkTheme,
-      theme: ApplicationThemeManager.lightTheme,
+      theme: ApplicationThemeManager.DarkTheme,
       debugShowCheckedModeBanner: false,
       initialRoute: PagesRouteName.initial,
       onGenerateRoute: RoutesGenerator.onGenerateRoutes,
