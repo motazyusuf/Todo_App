@@ -177,7 +177,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                     height: 50,
                   ),
 
-                  // button
+                  // registration button
                   FilledButton(
                       onPressed: () {
                         if (formKey.currentState!.validate()) print("Valid");
