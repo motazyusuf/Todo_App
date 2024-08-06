@@ -59,8 +59,7 @@ class _TasksViewState extends State<TasksView> {
                               ?.copyWith(color: theme.primaryColor),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
-                              color: theme.bottomAppBarTheme.color
-                                  ?.withOpacity(0.85))),
+                              color: theme.bottomAppBarTheme.color)),
                       inactiveDayStyle: DayStyle(
                         monthStrStyle: theme.textTheme.bodySmall
                             ?.copyWith(color: theme.primaryColor),
@@ -77,16 +76,15 @@ class _TasksViewState extends State<TasksView> {
                               )
                             ],
                             borderRadius: BorderRadius.circular(12),
-                            color: theme.bottomAppBarTheme.color
-                                ?.withOpacity(0.85)),
+                            color: theme.bottomAppBarTheme.color),
                       ),
                       activeDayStyle: DayStyle(
                         monthStrStyle: theme.textTheme.bodySmall
-                            ?.copyWith(color: theme.primaryColorLight),
+                            ?.copyWith(color: Colors.white),
                         dayNumStyle: theme.textTheme.bodyLarge
-                            ?.copyWith(color: theme.primaryColorLight),
+                            ?.copyWith(color: Colors.white),
                         dayStrStyle: theme.textTheme.bodySmall
-                            ?.copyWith(color: theme.primaryColorLight),
+                            ?.copyWith(color: Colors.white),
                         decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(

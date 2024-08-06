@@ -80,10 +80,11 @@ class ApplicationThemeManager {
     ),
   );
 
-  static ThemeData DarkTheme = ThemeData(
+  static ThemeData darkTheme = ThemeData(
     primaryColor: primaryColor,
     primaryColorLight: Color(0xff060e1e),
     primaryColorDark: Colors.black,
+    secondaryHeaderColor: Colors.white,
     shadowColor: Colors.black,
     bottomAppBarTheme: const BottomAppBarTheme(
       height: 93,
@@ -113,6 +114,11 @@ class ApplicationThemeManager {
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: Colors.white),
+      titleSmall: TextStyle(
+          fontFamily: "Poppins",
+          fontSize: 14,
+          fontWeight: FontWeight.w700,
+          color: Colors.white),
 
       // Body
       bodyLarge: TextStyle(
@@ -136,13 +142,13 @@ class ApplicationThemeManager {
           fontFamily: "Poppins",
           fontSize: 16,
           fontWeight: FontWeight.w400,
-          color: Color(0xFF797979)),
+          color: Colors.white),
 
       displaySmall: TextStyle(
           fontFamily: "Poppins",
           fontSize: 14,
           fontWeight: FontWeight.w400,
-          color: Color(0xFF797979)),
+          color: Colors.white),
 
       //Label
     ),
