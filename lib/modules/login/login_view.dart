@@ -128,8 +128,8 @@ class _LoginViewState extends State<LoginView> {
                             ? Icons.visibility
                             : Icons.visibility_off),
                       ),
-                      focusedBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(
+                      focusedBorder:  UnderlineInputBorder(
+                        borderSide: BorderSide(color: theme.primaryColor,
                           width: 2,
                         ),
                       ),
@@ -158,9 +158,11 @@ class _LoginViewState extends State<LoginView> {
                   // login button
                   FilledButton(
                       onPressed: () {
-                        // if (formKey.currentState!.validate())
-                        Navigator.pushReplacementNamed(
+                        //if (formKey.currentState!.validate())
+
+                          Navigator.pushReplacementNamed(
                               context, PagesRouteName.layout);
+
                       },
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

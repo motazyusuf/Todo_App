@@ -5,7 +5,9 @@ class ApplicationThemeManager {
   static const Color deviceSystemNavigationBarLight = Color(0xffdfecdb);
   static const Color deviceSystemNavigationBarDark = Color(0xFF141922);
 
-  static ThemeData lightTheme = ThemeData(
+  static ThemeData lightTheme = ThemeData(focusColor: primaryColor,
+    colorScheme: ColorScheme.light(primary: primaryColor ),
+    highlightColor: primaryColor,
     primaryColor: primaryColor,
     primaryColorLight: deviceSystemNavigationBarLight,
     primaryColorDark: Colors.black,
@@ -80,7 +82,9 @@ class ApplicationThemeManager {
     ),
   );
 
-  static ThemeData darkTheme = ThemeData(
+  static ThemeData darkTheme = ThemeData(focusColor: primaryColor,
+    colorScheme: ColorScheme.dark(primary: primaryColor, onPrimary: Colors.white),
+    highlightColor: primaryColor,
     primaryColor: primaryColor,
     primaryColorLight: Color(0xff060e1e),
     primaryColorDark: Colors.black,
