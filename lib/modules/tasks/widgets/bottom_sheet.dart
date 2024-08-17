@@ -147,9 +147,12 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                           description: descriptionController.text,
                           selectedDate: currentDate);
                       EasyLoading.show();
-                      FirebaseUtils.addTask(task);
+
+                      FirebaseUtils.addTask(task).then((value){
                       Navigator.pop(context);
                       EasyLoading.dismiss();
+                      });
+
                     }
                   },
                   child: Text("Add"))
