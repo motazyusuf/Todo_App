@@ -128,8 +128,8 @@ class _LoginViewState extends State<LoginView> {
                             ? Icons.visibility
                             : Icons.visibility_off),
                       ),
-                      focusedBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(
+                      focusedBorder:  UnderlineInputBorder(
+                        borderSide: BorderSide(color: theme.primaryColor,
                           width: 2,
                         ),
                       ),

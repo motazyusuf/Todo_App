@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TaskBottomSheet extends StatefulWidget {
   const TaskBottomSheet({super.key});
@@ -8,21 +9,43 @@ class TaskBottomSheet extends StatefulWidget {
 }
 
 class _TaskBottomSheetState extends State<TaskBottomSheet> {
+  var titleController = TextEditingController();
+  var descriptionController = TextEditingController();
+  var currentDate = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
-    var titleController = TextEditingController();
-    var descriptionController = TextEditingController();
     var height = MediaQuery.sizeOf(context).height;
     var theme = Theme.of(context);
+
+    getSelectedDate() async {
+      var selectedDate = await showDatePicker(
+        builder: (context, child) {
+          return Theme(data: theme, child: child!);
+        },
+        context: context,
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2025),
+      );
+
+      if (selectedDate != null) {
+        setState(() {
+          currentDate = selectedDate;
+        });
+      }
+    }
+
     return Container(
         height: height / 2,
-        padding: EdgeInsetsDirectional.only(start: 15,end: 15, top: 25, bottom: 5),
+        padding: const EdgeInsetsDirectional.only(
+            start: 15, end: 15, top: 25, bottom: 5),
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(18)),
+            color: theme.bottomAppBarTheme.color,
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(18), topRight: Radius.circular(18))),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-
             // sheet title
             Text(
               ("Add New Task"),
@@ -30,12 +53,14 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
               textAlign: TextAlign.center,
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
             // task title field
-            TextFormField(controller: titleController,
+            TextFormField(
+              cursorColor: theme.primaryColor,
+              controller: titleController,
               validator: (value) {
                 if (value == null || value == " ") {
                   return "Please enter task title";
@@ -43,16 +68,21 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                   return null;
               },
               decoration: InputDecoration(
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(width: 2, color: theme.primaryColor),
+                  ),
                   hintText: "Enter task title",
                   hintStyle: theme.textTheme.displayMedium),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
             // task description field
-            TextFormField(controller: descriptionController,
+            TextFormField(
+              cursorColor: theme.primaryColor,
+              controller: descriptionController,
               validator: (value) {
                 if (value == null || value == " ") {
                   return "Please enter task description";
@@ -61,11 +91,14 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
               },
               maxLines: 2,
               decoration: InputDecoration(
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(width: 2, color: theme.primaryColor),
+                  ),
                   hintText: "Enter task description",
                   hintStyle: theme.textTheme.displayMedium),
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
@@ -74,13 +107,18 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
               ("Select date:"),
               style: theme.textTheme.bodySmall,
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Text(
-              ("20 Aug"),
-              style: theme.textTheme.bodySmall,
-              textAlign: TextAlign.center,
+
+            // choosen date
+            InkWell(
+              onTap: () => getSelectedDate(),
+              child: Text(
+                DateFormat("dd MMM yyyy").format(currentDate),
+                style: theme.textTheme.bodySmall,
+                textAlign: TextAlign.center,
+              ),
             ),
             Spacer(),
 
