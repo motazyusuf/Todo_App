@@ -3,7 +3,7 @@ import '../models/task_model.dart';
 
 class FirebaseUtils {
 
-  CollectionReference<TaskModel>getCollection() {
+  static CollectionReference<TaskModel>getCollection() {
     return FirebaseFirestore.instance
         .collection(TaskModel.collectionName)
         .withConverter<TaskModel>(
@@ -22,7 +22,7 @@ class FirebaseUtils {
 
 
 
-  Future<void> addTask (TaskModel task)
+  static Future<void> addTask (TaskModel task)
   {
     var collectionRef = getCollection();
     var documentRef = collectionRef.doc();
