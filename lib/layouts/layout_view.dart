@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:todo_app/modules/tasks/widgets/bottom_sheet.dart';
 
 import '../modules/settings/settings_view.dart';
 import '../modules/tasks/tasks_view.dart';
@@ -29,10 +30,13 @@ class _LayoutViewState extends State<LayoutView> {
         extendBody: true,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
+
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           backgroundColor: theme.floatingActionButtonTheme.backgroundColor,
-          onPressed: () {},
+          onPressed: () {
+            showModalBottomSheet(context: context, builder: (context) =>TaskBottomSheet());
+          },
           child: CircleAvatar(
             backgroundColor: theme.primaryColor,
             radius: 24,
