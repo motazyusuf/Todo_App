@@ -1,5 +1,7 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/core/firebase_utils.dart';
+import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/modules/tasks/widgets/task_item.dart';
 
 class TasksView extends StatefulWidget {
@@ -123,10 +125,14 @@ class _TasksViewState extends State<TasksView> {
             ],
           ),
         ),
-        Expanded(
-          child: ListView.builder(
-              itemCount: 3, itemBuilder: (context, index) => TaskItem()),
-        )
+        //FutureBuilder<List<TaskModel>>(future: FirebaseUtils.readTask(), builder: (context, snapshot) {
+
+        //},)
+
+
+        // Expanded(
+        //   child: ListView.builder(
+        //       itemCount: 3, itemBuilder: (context, index) => TaskItem()),
       ],
     );
   }

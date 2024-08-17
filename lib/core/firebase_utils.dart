@@ -28,5 +28,13 @@ class FirebaseUtils {
     var documentRef = collectionRef.doc();
     return documentRef.set(task);
   }
+
+  static Future<List<TaskModel>> readTask ()
+  async {
+    var collectionRef = getCollection();
+    var data = await collectionRef.get();
+    var tasksList = data.docs.map((e) => e.data(),).toList();
+    return tasksList;
+  }
 }
 
