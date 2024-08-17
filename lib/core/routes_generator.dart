@@ -6,6 +6,7 @@ import 'package:todo_app/modules/registration/registration_view.dart';
 import 'package:todo_app/modules/splash/splash_view.dart';
 
 class RoutesGenerator {
+
   static Route<dynamic> onGenerateRoutes(RouteSettings settings) {
     switch (settings.name) {
       case PagesRouteName.initial:
