@@ -25,13 +25,18 @@ class _TasksViewState extends State<TasksView> {
 
     return Column(
       children: [
+
+
+        // Top part color and Calendar
         Padding(
           padding: const EdgeInsets.only(bottom: 58.0),
           child: Stack(
             clipBehavior: Clip.none,
             alignment: Alignment.topCenter,
             children: [
-              // top part color
+
+
+              // Top part color
               Container(
                 padding: EdgeInsetsDirectional.only(start: 20, top: 60),
                 height: height * 0.22,
@@ -43,7 +48,7 @@ class _TasksViewState extends State<TasksView> {
                 ),
               ),
 
-              // calendar
+              // Calendar
               Positioned(
                 top: height * 0.16,
                 child: SizedBox(
@@ -127,8 +132,8 @@ class _TasksViewState extends State<TasksView> {
           ),
         ),
 
-        // tasks
 
+        // Tasks
         StreamBuilder(
           stream: FirebaseUtils.getDataStream(focusedDate),
           builder: (context, snapshot) {
@@ -156,48 +161,15 @@ class _TasksViewState extends State<TasksView> {
             return Expanded(
               child: ListView.builder(
                 itemCount: tasksList?.length ?? 0,
-                itemBuilder: (context, index) => TaskItem(
-                  title: tasksList![index].title,
-                  date: tasksList![index]
-                      .selectedDate
-                      .toString()
-                      .substring(0, 10),
+                itemBuilder: (context, index) => TaskItem(task: tasksList![index]
+
                 ),
               ),
             );
           },
         )
 
-        // FutureBuilder<List<TaskModel>>(
-        //   future: FirebaseUtils.readTask(focusedDate),
-        //   builder: (context, snapshot) {
-        //     if (snapshot.hasError) {
-        //       return const Text("Error occurred");
-        //     }
-        //
-        //     if (snapshot.connectionState == ConnectionState.waiting) {
-        //       return Padding(
-        //         padding: const EdgeInsets.only(top: 50.0),
-        //         child: Center(
-        //           child: CircularProgressIndicator(
-        //             color: theme.primaryColor,
-        //           ),
-        //         ),
-        //       );
-        //     }
-        //
-        //     var taskslist = snapshot.data;
-        //     print("Lenght is ${taskslist?.length}");
-        //
-        //     return Expanded(
-        //         child: ListView.builder(
-        //             itemCount: taskslist?.length ?? 0,
-        //             itemBuilder: (context, index) => TaskItem(
-        //                   title: taskslist![index].title,
-        //                   date: taskslist![index].selectedDate.toString().substring(0,10),
-        //                 )));
-        //   },
-        // )
+
       ],
     );
   }
