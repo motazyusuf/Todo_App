@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:todo_app/modules/tasks/widgets/bottom_sheet.dart';
-
+import 'package:todo_app/views/tasks/widgets/bottom_sheet.dart';
 import '../modules/settings/settings_view.dart';
 import '../modules/tasks/tasks_view.dart';
 
