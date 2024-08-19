@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 
 class TaskItem extends StatelessWidget {
-  const TaskItem({super.key});
+   TaskItem({super.key, required this.title, required this.date, this.isDone = false});
+
+  String title;
+  String date;
+  bool isDone;
 
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;
     var theme = Theme.of(context);
+
+
 
     return Column(
       children: [
@@ -38,7 +44,7 @@ class TaskItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Running",
+                  title,
                   style: theme.textTheme.bodyMedium
                       ?.copyWith(color: theme.primaryColor),
                 ),
@@ -49,7 +55,7 @@ class TaskItem extends StatelessWidget {
                       size: 18,
                     ),
                     SizedBox(width: 3),
-                    Text("7:30 AM",
+                    Text("$date",
                         style: theme.textTheme.displayMedium
                             ?.copyWith(fontWeight: FontWeight.bold)),
                   ],

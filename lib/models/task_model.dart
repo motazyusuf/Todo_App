@@ -1,3 +1,5 @@
+import 'package:todo_app/core/services/extract_date.dart';
+
 class TaskModel {
   String? id;
   String title;
@@ -28,7 +30,7 @@ class TaskModel {
       "id": id,
       "title": title,
       "description": description,
-      "selectedDate": selectedDate.millisecondsSinceEpoch,
+      "selectedDate": extractDate(selectedDate).millisecondsSinceEpoch,
       "isDone": isDone,
     };
   }

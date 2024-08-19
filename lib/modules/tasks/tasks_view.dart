@@ -1,6 +1,7 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/core/firebase_utils.dart';
+import 'package:todo_app/core/services/extract_date.dart';
 import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/modules/tasks/widgets/task_item.dart';
 
@@ -13,7 +14,7 @@ class TasksView extends StatefulWidget {
 
 class _TasksViewState extends State<TasksView> {
   @override
-  var focusedDate = DateTime.now();
+  var focusedDate = extractDate(DateTime.now());
 
   Widget build(BuildContext context) {
     final EasyInfiniteDateTimelineController dateController =
@@ -115,8 +116,8 @@ class _TasksViewState extends State<TasksView> {
                     lastDate: DateTime(2025),
                     onDateChange: (selectedDate) {
                       setState(() {
-                        print("Clicked");
-                        focusedDate = selectedDate;
+                        focusedDate = extractDate(selectedDate);
+                        print("Clicked $focusedDate");
                       });
                     },
                   ),
@@ -125,14 +126,38 @@ class _TasksViewState extends State<TasksView> {
             ],
           ),
         ),
-        //FutureBuilder<List<TaskModel>>(future: FirebaseUtils.readTask(), builder: (context, snapshot) {
 
-        //},)
+        // tasks
+        FutureBuilder<List<TaskModel>>(
+          future: FirebaseUtils.readTask(focusedDate),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return const Text("Error occurred");
+            }
 
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Padding(
+                padding: const EdgeInsets.only(top: 50.0),
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: theme.primaryColor,
+                  ),
+                ),
+              );
+            }
 
-        // Expanded(
-        //   child: ListView.builder(
-        //       itemCount: 3, itemBuilder: (context, index) => TaskItem()),
+            var taskslist = snapshot.data;
+            print("Lenght is ${taskslist?.length}");
+
+            return Expanded(
+                child: ListView.builder(
+                    itemCount: taskslist?.length ?? 0,
+                    itemBuilder: (context, index) => TaskItem(
+                          title: taskslist![index].title,
+                          date: taskslist![index].selectedDate.toString().substring(0,10),
+                        )));
+          },
+        )
       ],
     );
   }

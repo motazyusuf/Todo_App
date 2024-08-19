@@ -13,14 +13,6 @@ class FirebaseUtils {
   }
 
 
-  // CollectionReference<TaskModel> getCollection = FirebaseFirestore.instance
-  //     .collection(TaskModel.collectionName)
-  //     .withConverter<TaskModel>(
-  //     fromFirestore: (snapshot, _) =>
-  //         TaskModel.fromJson(snapshot.data()!),
-  //     toFirestore: (value, _) => value.toJson());
-
-
 
   static Future<void> addTask (TaskModel task)
   {
@@ -29,9 +21,9 @@ class FirebaseUtils {
     return documentRef.set(task);
   }
 
-  static Future<List<TaskModel>> readTask ()
+  static Future<List<TaskModel>> readTask (DateTime selectedTime)
   async {
-    var collectionRef = getCollection();
+    var collectionRef = getCollection().where("selectedDate", isEqualTo: selectedTime.millisecondsSinceEpoch);
     var data = await collectionRef.get();
     var tasksList = data.docs.map((e) => e.data(),).toList();
     return tasksList;
