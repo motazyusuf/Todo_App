@@ -1,6 +1,9 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_app/modules/tasks/widgets/task_item.dart';
+import 'package:todo_app/core/firebase_utils.dart';
+import 'package:todo_app/core/services/extract_date.dart';
+import 'package:todo_app/models/task_model.dart';
+import 'package:todo_app/views/tasks/widgets/task_item.dart';
 
 class TasksView extends StatefulWidget {
   const TasksView({super.key});
@@ -11,7 +14,7 @@ class TasksView extends StatefulWidget {
 
 class _TasksViewState extends State<TasksView> {
   @override
-  var focusedDate = DateTime.now();
+  var focusedDate = extractDate(DateTime.now());
 
   Widget build(BuildContext context) {
     final EasyInfiniteDateTimelineController dateController =
@@ -22,13 +25,18 @@ class _TasksViewState extends State<TasksView> {
 
     return Column(
       children: [
+
+
+        // Top part color and Calendar
         Padding(
           padding: const EdgeInsets.only(bottom: 58.0),
           child: Stack(
             clipBehavior: Clip.none,
             alignment: Alignment.topCenter,
             children: [
-              // top part color
+
+
+              // Top part color
               Container(
                 padding: EdgeInsetsDirectional.only(start: 20, top: 60),
                 height: height * 0.22,
@@ -40,7 +48,7 @@ class _TasksViewState extends State<TasksView> {
                 ),
               ),
 
-              // calendar
+              // Calendar
               Positioned(
                 top: height * 0.16,
                 child: SizedBox(
@@ -113,8 +121,8 @@ class _TasksViewState extends State<TasksView> {
                     lastDate: DateTime(2025),
                     onDateChange: (selectedDate) {
                       setState(() {
-                        print("Clicked");
-                        focusedDate = selectedDate;
+                        focusedDate = extractDate(selectedDate);
+                        print("Clicked $focusedDate");
                       });
                     },
                   ),
@@ -123,10 +131,45 @@ class _TasksViewState extends State<TasksView> {
             ],
           ),
         ),
-        Expanded(
-          child: ListView.builder(
-              itemCount: 3, itemBuilder: (context, index) => TaskItem()),
+
+
+        // Tasks
+        StreamBuilder(
+          stream: FirebaseUtils.getDataStream(focusedDate),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return const Text("Error occurred");
+            }
+
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Padding(
+                padding: const EdgeInsets.only(top: 50.0),
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: theme.primaryColor,
+                  ),
+                ),
+              );
+            }
+
+            var tasksList = snapshot.data?.docs
+                .map(
+                  (e) => e.data(),
+                )
+                .toList();
+
+            return Expanded(
+              child: ListView.builder(
+                itemCount: tasksList?.length ?? 0,
+                itemBuilder: (context, index) => TaskItem(task: tasksList![index]
+
+                ),
+              ),
+            );
+          },
         )
+
+
       ],
     );
   }

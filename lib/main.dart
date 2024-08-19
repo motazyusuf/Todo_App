@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/core/application_theme_manager.dart';
 import 'package:todo_app/core/pages_route_name.dart';
 import 'package:todo_app/core/routes_generator.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:todo_app/core/services/loading_service.dart';
 import 'firebase_options.dart';
 import 'core/settings_provider.dart';
+import 'package:bot_toast/bot_toast.dart';
 
 Future<void> main() async {
 
@@ -16,6 +19,8 @@ Future<void> main() async {
 
   runApp(ChangeNotifierProvider(
       create: (context) => SettingsProvider(), child: const MyApp()));
+
+  configLoading();
 }
 
 class MyApp extends StatelessWidget {
@@ -26,6 +31,7 @@ class MyApp extends StatelessWidget {
     var provider = Provider.of<SettingsProvider>(context);
 
     return MaterialApp(
+      builder: EasyLoading.init(builder: BotToastInit()),
       themeMode: provider.currentMode,
       theme: ApplicationThemeManager.lightTheme,
       darkTheme: ApplicationThemeManager.darkTheme,

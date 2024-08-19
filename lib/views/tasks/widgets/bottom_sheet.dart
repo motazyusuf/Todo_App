@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:intl/intl.dart';
+import 'package:todo_app/core/firebase_utils.dart';
+import 'package:todo_app/models/task_model.dart';
 
 class TaskBottomSheet extends StatefulWidget {
   const TaskBottomSheet({super.key});
@@ -140,7 +143,16 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
               FilledButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      print("valid");
+                      var task = TaskModel(title: titleController.text,
+                          description: descriptionController.text,
+                          selectedDate: currentDate);
+                      EasyLoading.show();
+
+                      FirebaseUtils.addTask(task).then((value){
+                      Navigator.pop(context);
+                      EasyLoading.dismiss();
+                      });
+
                     }
                   },
                   child: Text("Add"))

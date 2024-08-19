@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/modules/settings/settings_component.dart';
+import 'package:todo_app/views/settings/settings_component.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
