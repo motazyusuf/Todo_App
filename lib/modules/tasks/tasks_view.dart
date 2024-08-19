@@ -125,7 +125,7 @@ class _TasksViewState extends State<TasksView> {
         ),
         Expanded(
           child: ListView.builder(
-              itemCount: 3, itemBuilder: (context, index) => TaskItem()),
+              itemCount: , itemBuilder: (context, index) => TaskItem()),
         )
       ],
     );
