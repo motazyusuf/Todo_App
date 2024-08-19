@@ -56,5 +56,29 @@ class FirebaseUtils {
 
     return stream;
   }
+
+  static Future<void> deleteTask (TaskModel task)
+  async {
+    // reference the collection and query || create if !exist and query
+    var collectionRef = getCollection();
+
+    // get snapshots
+    var documentRef =  collectionRef.doc(task.id);
+    // delete the document
+   return documentRef.delete();
+  }
+
+  static Future<void> updateTask (TaskModel task)
+  async {
+    // reference the collection and query || create if !exist and query
+    var collectionRef = getCollection();
+
+    // get snapshots
+    var documentRef =  collectionRef.doc(task.id);
+    // delete the document
+    return documentRef.update({
+      "isDone": true
+    });
+  }
 }
 

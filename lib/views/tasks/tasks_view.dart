@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/core/firebase_utils.dart';
 import 'package:todo_app/core/services/extract_date.dart';
 import 'package:todo_app/models/task_model.dart';
-import 'package:todo_app/modules/tasks/widgets/task_item.dart';
 import 'package:todo_app/views/tasks/widgets/task_item.dart';
 
 class TasksView extends StatefulWidget {

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:todo_app/core/firebase_utils.dart';
 import 'package:todo_app/models/task_model.dart';
-import 'package:todo_app/modules/tasks/widgets/task_details_bottomSheet.dart';
+import 'package:todo_app/views/tasks/widgets/task_details_bottomSheet.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class TaskItem extends StatelessWidget {
   TaskItem({super.key, required this.task});
@@ -14,43 +16,67 @@ class TaskItem extends StatelessWidget {
     var width = MediaQuery.sizeOf(context).width;
     var theme = Theme.of(context);
 
-    return InkWell(
-      onTap: () {
-        showModalBottomSheet(
-            context: context,
-            builder: (context) => TaskDetailsBottomsheet(task: task));
-      },
-      child: Column(
-        children: [
-          Container(
-            margin: const EdgeInsetsDirectional.symmetric(horizontal: 15),
-            decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: theme.shadowColor,
-                    blurRadius: 5,
-                    spreadRadius: 0.005,
-                    offset: Offset(-6, 5),
-                  )
-                ],
-                color: theme.bottomAppBarTheme.color,
-                borderRadius: BorderRadius.circular(15)),
+    return Container(
+      clipBehavior: Clip.hardEdge,
+      margin: EdgeInsetsDirectional.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(18),
+            boxShadow: [
+              BoxShadow(
+                color: theme.shadowColor,
+                blurRadius: 5,
+                spreadRadius: 0.005,
+                offset: Offset(-6, 5),
+              )
+            ],
+            ),
+      child: Slidable(
+
+
+        // slide
+        startActionPane: ActionPane(
+          motion:  ScrollMotion(),
+
+          children:  [
+
+            SlidableAction(borderRadius: BorderRadius.only(topLeft: Radius.circular(18), bottomLeft: Radius.circular(18)),
+              onPressed: (context) {
+              FirebaseUtils.deleteTask(task);
+              },
+              backgroundColor: Colors.red,
+              foregroundColor: Colors.white,
+              icon: Icons.delete,
+              label: 'Delete',
+            ),
+          ],
+        ),
+
+        // task
+        child: InkWell(
+          onTap: () {
+            showModalBottomSheet(
+                context: context,
+                builder: (context) => TaskDetailsBottomsheet(task: task));
+          },
+          child: Container(color: theme.bottomAppBarTheme.color,
+
             child: ListTile(
               contentPadding:
                   EdgeInsetsDirectional.symmetric(vertical: 18, horizontal: 20),
               leading: Container(
-                height: 100,
+                height: 150,
                 width: 4,
                 decoration: BoxDecoration(
-                    color: theme.primaryColor,
-                    borderRadius: BorderRadius.circular(8)),
+                    color: task.isDone? Colors.green : theme.primaryColor,
+                   ),
               ),
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     task.title,
-                    style: theme.textTheme.bodyMedium
+                    style: task.isDone?theme.textTheme.bodyMedium
+                        ?.copyWith(color: Colors.green) : theme.textTheme.bodyMedium
                         ?.copyWith(color: theme.primaryColor),
                   ),
                   Row(
@@ -67,24 +93,32 @@ class TaskItem extends StatelessWidget {
                   ),
                 ],
               ),
-              trailing: Container(
-                height: 35,
-                width: 70,
-                decoration: BoxDecoration(
-                    color: theme.primaryColor,
-                    borderRadius: BorderRadius.circular(12)),
-                child: const Icon(
-                  Icons.check,
-                  color: Colors.white,
-                  size: 30,
+              trailing: InkWell(
+                onTap: () {
+                  FirebaseUtils.updateTask(task);
+                  print("Tapped");
+
+                } ,
+                child: Container(
+                  height: 35,
+                  width: 70,
+                  decoration: BoxDecoration(
+                      color: task.isDone?  Colors.transparent: theme.primaryColor,
+                      borderRadius: BorderRadius.circular(12)),
+                  child: task.isDone? Text(
+                          "Done! ",
+                          style: theme.textTheme.bodyMedium
+                              ?.copyWith(color: Colors.green),
+                        ) : const Icon(
+                    Icons.check,
+                    color: Colors.white,
+                    size: 30,
+                  ),
                 ),
               ),
             ),
           ),
-          const SizedBox(
-            height: 10,
-          )
-        ],
+        ),
       ),
     );
   }

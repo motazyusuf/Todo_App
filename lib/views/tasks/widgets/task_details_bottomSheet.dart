@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:todo_app/core/firebase_utils.dart';
 import 'package:todo_app/models/task_model.dart';
 
 class TaskDetailsBottomsheet extends StatelessWidget {
@@ -30,7 +32,17 @@ class TaskDetailsBottomsheet extends StatelessWidget {
           Text(
             (task.description),
             style: theme.textTheme.titleMedium?.copyWith(color: theme.textTheme.bodyLarge?.color),
-          )
+          ),
+          Spacer(),
+          FilledButton(style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+              onPressed: () {
+            EasyLoading.show();
+            FirebaseUtils.deleteTask(task);
+            Navigator.pop(context);
+            EasyLoading.dismiss();
+              },
+              child: Text("Delete"))
+
         ],
       ),
     );

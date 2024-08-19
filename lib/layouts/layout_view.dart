@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:todo_app/views/tasks/widgets/bottom_sheet.dart';
-import '../modules/settings/settings_view.dart';
-import '../modules/tasks/tasks_view.dart';
+import '../views/settings/settings_view.dart';
+import '../views/tasks/tasks_view.dart';
 
 class LayoutView extends StatefulWidget {
   const LayoutView({super.key});
