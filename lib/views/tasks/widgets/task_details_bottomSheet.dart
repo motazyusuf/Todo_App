@@ -31,7 +31,7 @@ class TaskDetailsBottomsheet extends StatelessWidget {
           SizedBox(height: 25,),
           Text(
             (task.description),
-            style: theme.textTheme.titleMedium?.copyWith(color: theme.textTheme.bodyLarge?.color),
+            style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500,color: theme.textTheme.bodyLarge?.color),
           ),
           Spacer(),
           FilledButton(style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
