@@ -31,7 +31,7 @@ class _SettingsComponentState extends State<SettingsComponent> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "${widget.optionsName}: ",
+            "${widget.optionsName} ",
             style: theme.textTheme.titleSmall,
           ),
           const SizedBox(
