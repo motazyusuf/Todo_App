@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/core/pages_route_name.dart';
 import 'package:todo_app/layouts/layout_view.dart';
-import 'package:todo_app/modules/login/login_view.dart';
-import 'package:todo_app/modules/registration/registration_view.dart';
-import 'package:todo_app/modules/splash/splash_view.dart';
+import 'package:todo_app/views/login/login_view.dart';
+import 'package:todo_app/views/registration/registration_view.dart';
+import 'package:todo_app/views/splash/splash_view.dart';
 
 class RoutesGenerator {
 
