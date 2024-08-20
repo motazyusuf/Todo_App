@@ -43,11 +43,12 @@ class _SettingsViewState extends State<SettingsView> {
           options: language,
           optionsName: "${localization.language}:",
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         SettingsComponent(
-          initial: provider.currentMode == ThemeData.dark ? mode[1] : mode[0],
+
+          initial: provider.currentMode == ThemeMode.light ? mode[1] : mode [0] ,
           options: mode,
           optionsName: "${localization.mode}:",
         )
