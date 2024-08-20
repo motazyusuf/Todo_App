@@ -3,6 +3,8 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:intl/intl.dart';
 import 'package:todo_app/core/firebase_utils.dart';
 import 'package:todo_app/models/task_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class TaskBottomSheet extends StatefulWidget {
   const TaskBottomSheet({super.key});
@@ -21,6 +23,8 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
   Widget build(BuildContext context) {
     var height = MediaQuery.sizeOf(context).height;
     var theme = Theme.of(context);
+    var localization = AppLocalizations.of(context)!;
+
 
     getSelectedDate() async {
       var selectedDate = await showDatePicker(
@@ -53,7 +57,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
             children: [
               // sheet title
               Text(
-                ("Add New Task"),
+                (localization.addNewTask),
                 style: theme.textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
@@ -70,7 +74,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                 controller: titleController,
                 validator: (value) {
                   if (value == null || value == "") {
-                    return "Please enter task title";
+                    return localization.enterTaskTitle;
                   } else
                     return null;
                 },
@@ -82,7 +86,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                       borderSide:
                           BorderSide(width: 2, color: theme.primaryColor),
                     ),
-                    hintText: "Enter task title",
+                    hintText: localization.enterTaskTitle,
                     hintStyle: theme.textTheme.displayMedium),
               ),
 
@@ -98,7 +102,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                 controller: descriptionController,
                 validator: (value) {
                   if (value == null || value == "") {
-                    return "Please enter task description";
+                    return localization.enterTaskDescription;
                   } else
                     return null;
                 },
@@ -111,7 +115,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                       borderSide:
                           BorderSide(width: 2, color: theme.primaryColor),
                     ),
-                    hintText: "Enter task description",
+                    hintText: localization.enterTaskDescription,
                     hintStyle: theme.textTheme.displayMedium),
               ),
 
@@ -121,7 +125,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
 
               // select date
               Text(
-                ("Select date:"),
+                (localization.selectDate),
                 style: theme.textTheme.displayMedium?.copyWith(fontWeight: FontWeight.normal),
               ),
               const SizedBox(

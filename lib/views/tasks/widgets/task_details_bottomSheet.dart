@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:todo_app/core/firebase_utils.dart';
 import 'package:todo_app/models/task_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class TaskDetailsBottomsheet extends StatelessWidget {
   TaskDetailsBottomsheet({super.key, required this.task});
@@ -11,8 +13,10 @@ class TaskDetailsBottomsheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var localization = AppLocalizations.of(context)!;
     var theme = Theme.of(context);
     var height = MediaQuery.sizeOf(context).height;
+
     return Container(color: Theme.of(context).bottomAppBarTheme.color,
       height: height/3,
       padding: const EdgeInsetsDirectional.only(
@@ -41,7 +45,7 @@ class TaskDetailsBottomsheet extends StatelessWidget {
             Navigator.pop(context);
             EasyLoading.dismiss();
               },
-              child: Text("Delete"))
+              child: Text(localization.delete))
 
         ],
       ),

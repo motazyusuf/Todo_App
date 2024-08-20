@@ -9,6 +9,8 @@ import 'package:todo_app/core/services/loading_service.dart';
 import 'firebase_options.dart';
 import 'core/settings_provider.dart';
 import 'package:bot_toast/bot_toast.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> main() async {
 
@@ -31,6 +33,9 @@ class MyApp extends StatelessWidget {
     var provider = Provider.of<SettingsProvider>(context);
 
     return MaterialApp(
+      locale: Locale(provider.currentLanguage),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       builder: EasyLoading.init(builder: BotToastInit()),
       themeMode: provider.currentMode,
       theme: ApplicationThemeManager.lightTheme,
