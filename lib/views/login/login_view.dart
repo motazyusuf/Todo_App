@@ -158,27 +158,29 @@ class _LoginViewState extends State<LoginView> {
 
                   // login button
                   FilledButton(
-                      onPressed: () async {
-                        if (formKey.currentState!.validate()) {
-
-                          final message = await FirebaseAuthentication().login(
-                            email: emailController.text,
-                            password: passwordController.text,
-                          );
-
-                          if (message!.contains('Success')) {
-                            Navigator.pushReplacementNamed(
-                                context, PagesRouteName.layout);
-                          }
-
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(message),
-                            ),
-                          );
-
-                        }
-                      },
+                      onPressed: ()  {
+                        Navigator.pushReplacementNamed(
+                                      context, PagesRouteName.layout);
+                      //   if (formKey.currentState!.validate()) {
+                      //
+                      //     final message = await FirebaseAuthentication().login(
+                      //       email: emailController.text,
+                      //       password: passwordController.text,
+                      //     );
+                      //
+                      //     if (message!.contains('Success')) {
+                      //       Navigator.pushReplacementNamed(
+                      //           context, PagesRouteName.layout);
+                      //     }
+                      //
+                      //     ScaffoldMessenger.of(context).showSnackBar(
+                      //       SnackBar(
+                      //         content: Text(message),
+                      //       ),
+                      //     );
+                      //
+                      //   }
+                       },
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

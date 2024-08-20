@@ -1,0 +1,18 @@
+{
+  "welcomeBack": "عودا حميدا!",
+  "mail": "البريد الالكتروني",
+  "password": "كلمة المرور",
+  "forgotPassword": "نسيت كلمة المرور",
+  "login": "تسجيل دخول",
+  "createNewAccount": "انشاء حساب جديد ?",
+  "welcomeOnBoard": "تنضمام مرجب!",
+  "fullName": "الاسم بالكامل",
+  "toDoList": "قائمة المهام",
+  "addNewTask": "اضافة مهمة جديدة",
+  "enterTaskTitle": "ادخل عنوان المهمة",
+  "enterTaskDescription": "ادخل تفاصيل المهمة",
+  "selectDate": "اختار تاريخ",
+  "add": "اضف",
+  "delete": "امحي",
+  "done": "تم!"
+}

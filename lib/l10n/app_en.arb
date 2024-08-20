@@ -1,0 +1,18 @@
+{
+  "welcomeBack": "Welcome Back!",
+  "mail": "E-mail",
+  "password": "Password",
+  "forgotPassword": "Forgot Password",
+  "login": "Login",
+  "createNewAccount": "Create new account ?",
+  "welcomeOnBoard": "Welcome on Board!",
+  "fullName": "Full name",
+  "toDoList": "To Do List",
+  "addNewTask": "Add New Task",
+  "enterTaskTitle": "Enter task title",
+  "enterTaskDescription": "Enter task description",
+  "selectDate": "Select date",
+  "add": "Add",
+  "delete": "Delete",
+  "done": "Done!"
+}

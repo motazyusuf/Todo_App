@@ -118,7 +118,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                     controller: emailController,
                     cursorColor: theme.primaryColor,
                     style: theme.textTheme.displaySmall
-                        ?.copyWith(color: theme.primaryColorDark),
+                       ,
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.only(top: 15),
                       suffixIcon: const Icon(
