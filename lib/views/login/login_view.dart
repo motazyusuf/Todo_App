@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:todo_app/core/pages_route_name.dart';
 import 'package:todo_app/core/services/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -21,6 +22,7 @@ class _LoginViewState extends State<LoginView> {
     var theme = Theme.of(context);
     var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;
+    var localization = AppLocalizations.of(context)!;
 
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
@@ -36,7 +38,7 @@ class _LoginViewState extends State<LoginView> {
             centerTitle: true,
             title: Text(
               textAlign: TextAlign.center,
-              "Login",
+              localization.login,
               style: theme.textTheme.titleMedium,
             ),
           ),
@@ -53,7 +55,7 @@ class _LoginViewState extends State<LoginView> {
 
                   // Welcome back text
                   Text(
-                    "Welcome Back!",
+                    localization.welcomeBack,
                     style: theme.textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
                   ),
 
@@ -63,7 +65,7 @@ class _LoginViewState extends State<LoginView> {
 
                   // email
                   Text(
-                    "E-mail",
+                    localization.login,
                     style: theme.textTheme.displayMedium,
                   ),
                   TextFormField(
@@ -91,7 +93,7 @@ class _LoginViewState extends State<LoginView> {
                         borderSide:
                             BorderSide(width: 2, color: theme.primaryColor),
                       ),
-                      hintText: "Enter your email address",
+                      hintText: localization.enterEmailAddress,
                       hintStyle: theme.textTheme.displaySmall,
                     ),
                   ),
@@ -102,7 +104,7 @@ class _LoginViewState extends State<LoginView> {
 
                   // password
                   Text(
-                    "Password",
+                    localization.password,
                     style: theme.textTheme.displayMedium,
                   ),
                   TextFormField(
@@ -134,7 +136,7 @@ class _LoginViewState extends State<LoginView> {
                           width: 2,
                         ),
                       ),
-                      hintText: "Enter your password",
+                      hintText: localization.enterPassword,
                       hintStyle: theme.textTheme.displaySmall,
                     ),
                   ),
@@ -148,7 +150,7 @@ class _LoginViewState extends State<LoginView> {
                   InkWell(
                     onTap: (){},
                     child: Text(
-                      "Forgot password",
+                      localization.forgotPassword,
                       style: theme.textTheme.displayMedium?.copyWith(color: theme.primaryColor),
                     ),
                   ),
@@ -181,14 +183,14 @@ class _LoginViewState extends State<LoginView> {
                       //
                       //   }
                        },
-                      child: const Row(
+                      child:  Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Login"),
-                          SizedBox(
+                          Text(localization.login),
+                          const SizedBox(
                             width: 5,
                           ),
-                          Icon(
+                          const Icon(
                             Icons.arrow_forward,
                             size: 15,
                           )
@@ -207,7 +209,7 @@ class _LoginViewState extends State<LoginView> {
                     child: Padding(
                       padding:  EdgeInsets.only(left: width/4 ),
                       child: Text(
-                        "Create new account ?",
+                        localization.createNewAccount,
                         style: theme.textTheme.displayMedium?.copyWith(color: theme.primaryColor, fontSize: 14),
                       ),
                     ),

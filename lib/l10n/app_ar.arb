@@ -2,6 +2,8 @@
   "welcomeBack": "عودا حميدا!",
   "mail": "البريد الالكتروني",
   "password": "كلمة المرور",
+  "enterEmailAddress": "ادخل بريدك الالكتروني",
+  "enterPassword": "ادخل كلمة المرور",
   "forgotPassword": "نسيت كلمة المرور",
   "login": "تسجيل دخول",
   "createNewAccount": "انشاء حساب جديد ?",
@@ -13,6 +15,6 @@
   "enterTaskDescription": "ادخل تفاصيل المهمة",
   "selectDate": "اختار تاريخ",
   "add": "اضف",
-  "delete": "امحي",
+  "delete": "حذف",
   "done": "تم!"
 }
