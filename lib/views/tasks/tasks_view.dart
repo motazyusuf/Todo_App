@@ -4,6 +4,8 @@ import 'package:todo_app/core/firebase_utils.dart';
 import 'package:todo_app/core/services/extract_date.dart';
 import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/views/tasks/widgets/task_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class TasksView extends StatefulWidget {
   const TasksView({super.key});
@@ -22,6 +24,7 @@ class _TasksViewState extends State<TasksView> {
     var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;
     var theme = Theme.of(context);
+    var localization = AppLocalizations.of(context)!;
 
     return Column(
       children: [
@@ -43,7 +46,7 @@ class _TasksViewState extends State<TasksView> {
                 width: width,
                 decoration: BoxDecoration(color: theme.primaryColor),
                 child: Text(
-                  "To Do List",
+                  localization.toDoList,
                   style: theme.textTheme.titleLarge,
                 ),
               ),

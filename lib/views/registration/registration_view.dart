@@ -73,7 +73,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                   TextFormField(
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
-                        return "Please enter your name";
+                        return localization.enterFullName;
                       }
 
                       return null;

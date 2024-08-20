@@ -21,5 +21,12 @@
   "selectDate": "Select date",
   "add": "Add",
   "delete": "Delete",
-  "done": "Done!"
+  "done": "Done!",
+  "language": "Language",
+  "mode": "Mode",
+  "light": "Light",
+  "dark":"Dark",
+  "arabic": "Arabic",
+  "english": "English",
+  "settings":"Settings"
 }

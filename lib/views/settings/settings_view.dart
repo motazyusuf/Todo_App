@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/core/settings_provider.dart';
 import 'package:todo_app/views/settings/settings_component.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
@@ -11,11 +15,13 @@ class SettingsView extends StatefulWidget {
 class _SettingsViewState extends State<SettingsView> {
   @override
   Widget build(BuildContext context) {
+    var localization = AppLocalizations.of(context)!;
     var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;
     var theme = Theme.of(context);
-    List<String> language = ["English", "Arabic"];
-    List<String> mode = ["Dark", "Light"];
+    var provider = Provider.of<SettingsProvider>(context);
+    List<String> language = [localization.english, localization.arabic];
+    List<String> mode = [localization.dark, localization.light];
 
     return Column(
       children: [
@@ -27,21 +33,23 @@ class _SettingsViewState extends State<SettingsView> {
             width: width,
             decoration: BoxDecoration(color: theme.primaryColor),
             child: Text(
-              "Settings",
+              localization.settings,
               style: theme.textTheme.titleLarge,
             ),
           ),
         ),
         SettingsComponent(
+          initial:  provider.currentLanguage == "ar" ? language[1] : language[0] ,
           options: language,
-          optionsName: "Language:",
+          optionsName: "${localization.language}:",
         ),
         SizedBox(
           height: 10,
         ),
         SettingsComponent(
+          initial: provider.currentMode == ThemeData.dark ? mode[1] : mode[0],
           options: mode,
-          optionsName: "Mode:",
+          optionsName: "${localization.mode}:",
         )
       ],
     );

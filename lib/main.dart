@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
     var provider = Provider.of<SettingsProvider>(context);
 
     return MaterialApp(
+      locale: Locale(provider.currentLanguage),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       builder: EasyLoading.init(builder: BotToastInit()),

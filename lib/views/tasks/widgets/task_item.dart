@@ -4,6 +4,8 @@ import 'package:todo_app/core/firebase_utils.dart';
 import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/views/tasks/widgets/task_details_bottomSheet.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class TaskItem extends StatelessWidget {
   TaskItem({super.key, required this.task});
@@ -15,6 +17,8 @@ class TaskItem extends StatelessWidget {
     var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;
     var theme = Theme.of(context);
+    var localization = AppLocalizations.of(context)!;
+
 
     return Container(
       clipBehavior: Clip.hardEdge,
@@ -46,7 +50,7 @@ class TaskItem extends StatelessWidget {
               backgroundColor: Colors.red,
               foregroundColor: Colors.white,
               icon: Icons.delete,
-              label: 'Delete',
+              label: localization.delete,
             ),
           ],
         ),
@@ -106,7 +110,7 @@ class TaskItem extends StatelessWidget {
                       color: task.isDone?  Colors.transparent: theme.primaryColor,
                       borderRadius: BorderRadius.circular(12)),
                   child: task.isDone? Text(
-                          "Done! ",
+                          localization.done,
                           style: theme.textTheme.bodyMedium
                               ?.copyWith(color: Colors.green),
                         ) : const Icon(
