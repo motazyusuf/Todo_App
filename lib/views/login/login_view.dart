@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:todo_app/core/pages_route_name.dart';
+import 'package:todo_app/core/services/firebase_auth.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -80,7 +81,7 @@ class _LoginViewState extends State<LoginView> {
                     controller: emailController,
                     cursorColor: theme.primaryColor,
                     style: theme.textTheme.displaySmall
-                        ?.copyWith(color: theme.primaryColorDark),
+                        ,
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.only(top: 15),
                       suffixIcon: const Icon(
@@ -115,7 +116,7 @@ class _LoginViewState extends State<LoginView> {
                     controller: passwordController,
                     cursorColor: theme.primaryColor,
                     style: theme.textTheme.displaySmall
-                        ?.copyWith(color: theme.primaryColorDark),
+                        ,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.only(top: 15),
                       suffixIcon: InkWell(
@@ -157,12 +158,26 @@ class _LoginViewState extends State<LoginView> {
 
                   // login button
                   FilledButton(
-                      onPressed: () {
-                        //if (formKey.currentState!.validate())
+                      onPressed: () async {
+                        if (formKey.currentState!.validate()) {
 
-                          Navigator.pushReplacementNamed(
-                              context, PagesRouteName.layout);
+                          final message = await FirebaseAuthentication().login(
+                            email: emailController.text,
+                            password: passwordController.text,
+                          );
 
+                          if (message!.contains('Success')) {
+                            Navigator.pushReplacementNamed(
+                                context, PagesRouteName.layout);
+                          }
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(message),
+                            ),
+                          );
+
+                        }
                       },
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

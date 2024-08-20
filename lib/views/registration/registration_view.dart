@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:todo_app/core/pages_route_name.dart';
+import 'package:todo_app/core/services/firebase_auth.dart';
 
 class RegistrationView extends StatefulWidget {
   const RegistrationView({super.key});
@@ -77,7 +79,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                     controller: personController,
                     cursorColor: theme.primaryColor,
                     style: theme.textTheme.displaySmall
-                        ?.copyWith(color: theme.primaryColorDark),
+                     ,
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.only(top: 15),
                       suffixIcon: const Icon(
@@ -151,7 +153,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                     controller: passwordController,
                     cursorColor: theme.primaryColor,
                     style: theme.textTheme.displaySmall
-                        ?.copyWith(color: theme.primaryColorDark),
+                        ,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.only(top: 15),
                       suffixIcon: InkWell(
@@ -179,8 +181,29 @@ class _RegistrationViewState extends State<RegistrationView> {
 
                   // registration button
                   FilledButton(
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) print("Valid");
+                      onPressed: () async {
+
+
+                        if (formKey.currentState!.validate()) {
+                          final message =
+                              await FirebaseAuthentication().registration(
+                            email: "m",
+                            password: "mm",
+                          );
+
+                          print("$message");
+
+                          if (message!.contains('Success')) {
+                            Navigator.pushReplacementNamed(
+                                context, PagesRouteName.layout);
+                          }
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(message),
+                            ),
+                          );
+                        }
+                        ;
                       },
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
