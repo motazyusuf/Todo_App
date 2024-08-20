@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:todo_app/core/pages_route_name.dart';
 import 'package:todo_app/core/services/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RegistrationView extends StatefulWidget {
   const RegistrationView({super.key});
@@ -19,6 +20,7 @@ class _RegistrationViewState extends State<RegistrationView> {
 
   @override
   Widget build(BuildContext context) {
+    var localization = AppLocalizations.of(context)!;
     var theme = Theme.of(context);
     var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;
@@ -37,7 +39,7 @@ class _RegistrationViewState extends State<RegistrationView> {
             centerTitle: true,
             title: Text(
               textAlign: TextAlign.center,
-              "Create account",
+              localization.createAccount,
               style: theme.textTheme.titleMedium,
             ),
           ),
@@ -54,7 +56,7 @@ class _RegistrationViewState extends State<RegistrationView> {
 
                   // Welcome on board
                   Text(
-                    "Welcome on Board!",
+                    localization.welcomeOnBoard,
                     style: theme.textTheme.bodyLarge
                         ?.copyWith(fontWeight: FontWeight.bold),
                   ),
@@ -65,7 +67,7 @@ class _RegistrationViewState extends State<RegistrationView> {
 
                   // full name
                   Text(
-                    "Full name",
+                    localization.fullName,
                     style: theme.textTheme.displayMedium,
                   ),
                   TextFormField(
@@ -89,7 +91,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                         borderSide:
                             BorderSide(width: 2, color: theme.primaryColor),
                       ),
-                      hintText: "Enter your full name",
+                      hintText: localization.enterFullName,
                       hintStyle: theme.textTheme.displaySmall,
                     ),
                   ),
@@ -100,7 +102,7 @@ class _RegistrationViewState extends State<RegistrationView> {
 
                   // email
                   Text(
-                    "E-mail",
+                    localization.mail,
                     style: theme.textTheme.displayMedium,
                   ),
                   TextFormField(
@@ -108,9 +110,9 @@ class _RegistrationViewState extends State<RegistrationView> {
                       var regex = RegExp(
                           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
                       if (value == null || value.trim().isEmpty) {
-                        return "Please enter your email";
+                        return localization.pleaseEnterYourEmail;
                       } else if (!regex.hasMatch(value)) {
-                        return "Invalid E-mail";
+                        return localization.invalidEmail;
                       }
 
                       return null;
@@ -128,7 +130,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                         borderSide:
                             BorderSide(width: 2, color: theme.primaryColor),
                       ),
-                      hintText: "Enter your email address",
+                      hintText: localization.enterEmailAddress,
                       hintStyle: theme.textTheme.displaySmall,
                     ),
                   ),
@@ -139,14 +141,14 @@ class _RegistrationViewState extends State<RegistrationView> {
 
                   // password
                   Text(
-                    "Password",
+                    localization.password,
                     style: theme.textTheme.displayMedium,
                   ),
                   TextFormField(
                     obscureText: isObscure ? true : false,
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
-                        return "Please enter your password";
+                        return localization.pleaseEnterYourPassword;
                       }
                       return null;
                     },
@@ -170,7 +172,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                           width: 2,
                         ),
                       ),
-                      hintText: "Enter your password",
+                      hintText: localization.enterPassword,
                       hintStyle: theme.textTheme.displaySmall,
                     ),
                   ),
@@ -205,10 +207,10 @@ class _RegistrationViewState extends State<RegistrationView> {
                         }
                         ;
                       },
-                      child: const Row(
+                      child:  Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Create account"),
+                          Text(localization.createAccount),
                           SizedBox(
                             width: 5,
                           ),
