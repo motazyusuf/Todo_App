@@ -189,21 +189,30 @@ class _RegistrationViewState extends State<RegistrationView> {
                         if (formKey.currentState!.validate()) {
                           final message =
                               await FirebaseAuthentication().registration(
-                            email: "m",
-                            password: "mm",
+                            email: emailController.text,
+                            password: passwordController.text,
                           );
 
-                          print("$message");
+
 
                           if (message!.contains('Success')) {
                             Navigator.pushReplacementNamed(
                                 context, PagesRouteName.layout);
+
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text("Logged in"),
+                              ),
+                            );
                           }
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(message),
-                            ),
-                          );
+                          else{
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(message),
+                              ),
+                            );
+                          }
                         }
                         ;
                       },
