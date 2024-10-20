@@ -36,11 +36,11 @@ class FirebaseUtils {
     // reference the collection and query || create if !exist and query
     var collectionRef = getCollection().where("selectedDate", isEqualTo: selectedTime.millisecondsSinceEpoch);
 
-    // get snapshots
+    // get documents
     var data = await collectionRef.get();
 
-    // get the document data out of the snapshots
-    var tasksList = data.docs.map((e) => e.data(),).toList();
+    // get the document data
+    var tasksList = data.docs.map((document) => document.data(),).toList();
     return tasksList;
   }
 

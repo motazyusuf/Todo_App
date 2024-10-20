@@ -29,7 +29,6 @@ class _TasksViewState extends State<TasksView> {
     return Column(
       children: [
 
-
         // Top part color and Calendar
         Padding(
           padding: const EdgeInsets.only(bottom: 58.0),
@@ -135,7 +134,6 @@ class _TasksViewState extends State<TasksView> {
           ),
         ),
 
-
         // Tasks
         StreamBuilder(
           stream: FirebaseUtils.getDataStream(focusedDate),
@@ -172,8 +170,6 @@ class _TasksViewState extends State<TasksView> {
             );
           },
         )
-
-
       ],
     );
   }

@@ -53,7 +53,6 @@ class _LoginViewState extends State<LoginView> {
                     SizedBox(
                       height: height * 0.22,
                     ),
-            
                     // Welcome back text
                     Text(
                       localization.welcomeBack,
