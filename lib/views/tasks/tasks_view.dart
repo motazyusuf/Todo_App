@@ -141,7 +141,8 @@ class _TasksViewState extends State<TasksView> {
           stream: FirebaseUtils.getDataStream(focusedDate),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              return const Text("Error occurred");
+              String error = snapshot.error.toString();
+              return  Text(error);
             }
 
             if (snapshot.connectionState == ConnectionState.waiting) {
