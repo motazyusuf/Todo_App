@@ -140,7 +140,7 @@ class _TasksViewState extends State<TasksView> {
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               String error = snapshot.error.toString();
-              return  Text(error);
+              return Text(error);
             }
 
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -156,7 +156,7 @@ class _TasksViewState extends State<TasksView> {
 
             var tasksList = snapshot.data?.docs
                 .map(
-                  (e) => e.data(),
+                  (document) => document.data(),
                 )
                 .toList();
 
